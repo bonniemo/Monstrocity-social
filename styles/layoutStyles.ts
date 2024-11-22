@@ -6,7 +6,7 @@ export const layoutStyles = StyleSheet.create({
     backgroundColor: "#25292e",
     justifyContent: "center",
     alignItems: "center",
-  },  
+  },
   imageContainer: {
     flex: 1,
     paddingTop: 28,
@@ -16,6 +16,15 @@ export const layoutStyles = StyleSheet.create({
     alignItems: "center",
   },
   scrollContainer: {
-    flexGrow: 1,     
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 16,
   },
+  scrollContainerSmall: {
+    flex: 0,
+    height: 200,
+    marginTop: 20,
+    marginBottom: 20,
+  },  
 });
