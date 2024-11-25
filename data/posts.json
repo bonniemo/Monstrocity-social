@@ -1,95 +1,94 @@
 {
-    "posts": [
-      {
-        "id": "1",
-        "author": "Nyx Umbra",
-        "heading": "Embracing the Shadows",
-        "text": "The beauty of shadows is in their mystery. Tonight, the crescent moon whispers secrets only the brave can hear.",
-        "tags": ["mystery", "shadows", "night"],
-        "likes": 0,
-        "comments": []
-      },
-      {
-        "id": "2",
-        "author": "Ignatius Flameheart",
-        "heading": "Blazing New Trails",
-        "text": "Nothing feels better than the thrill of discovery! Let your inner fire guide you to new adventures.",
-        "tags": ["adventure", "fire", "exploration"],
-        "likes": 0,
-        "comments": []
-      },
-      {
-        "id": "3",
-        "author": "Luna Lumina",
-        "heading": "Starry Nights and Kind Hearts",
-        "text": "When the stars align, they remind us of the connections we share. Let their light guide you through even the darkest times.",
-        "tags": ["stars", "guidance", "healing"],
-        "likes": 0,
-        "comments": []
-      },
-      {
-        "id": "4",
-        "author": "Terrus Mosshide",
-        "heading": "Roots Run Deep",
-        "text": "Growth takes time, but every seed has the potential to flourish. Remember to nurture the roots of your life.",
-        "tags": ["growth", "nature", "earth"],
-        "likes": 0,
-        "comments": []
-      },
-      {
-        "id": "5",
-        "author": "Zephyr Skywhisper",
-        "heading": "Feel the Breeze",
-        "text": "The winds carry stories of freedom and endless possibilities. Take a leap, and let the breeze guide your path!",
-        "tags": ["wind", "freedom", "adventure"],
-        "likes": 0,
-        "comments": []
-      },
-      {
-        "id": "6",
-        "author": "Eclipse Nocturne",
-        "heading": "Illusions of the Night",
-        "text": "The night is a canvas, and I paint with shadows and dreams. Watch closely; not everything is as it seems.",
-        "tags": ["illusions", "night", "creativity"],
-        "likes": 0,
-        "comments": []
-      },
-      {
-        "id": "7",
-        "author": "Pyra Emberglow",
-        "heading": "Ignite Your Passion",
-        "text": "Fire is not just destruction; it is the spark of creation. Let your passion burn bright and inspire those around you!",
-        "tags": ["fire", "passion", "inspiration"],
-        "likes": 0,
-        "comments": []
-      },
-      {
-        "id": "8",
-        "author": "Selena Dewdrop",
-        "heading": "Nature's Healing Touch",
-        "text": "Even the smallest droplet of dew can bring life. Let nature's gentle touch remind you of the beauty in simplicity.",
-        "tags": ["nature", "healing", "simplicity"],
-        "likes": 0,
-        "comments": []
-      },
-      {
-        "id": "9",
-        "author": "Orion Starcaster",
-        "heading": "Guided by the Stars",
-        "text": "The constellations tell ancient stories. Look up, and you might find the answers you've been seeking.",
-        "tags": ["stars", "guidance", "wisdom"],
-        "likes": 0,
-        "comments": []
-      },
-      {
-        "id": "10",
-        "author": "Aurora Glimmer",
-        "heading": "Shine Bright",
-        "text": "Every light is unique, and together, we create dazzling displays. Don't dim your shine for anyone!",
-        "tags": ["light", "shine", "individuality"],
-        "likes": 0,
-        "comments": []
-      }
-    ]
-  }
-  
+  "posts": [
+    {
+      "id": "1",
+      "author": "Nyx Umbra",
+      "heading": "Shadow Pranks",
+      "text": "I hid in the shadow of a guard dog, only to realize it was wagging its tail at me the entire time. Stealth mode: failed.",
+      "tags": ["shadows", "pranks", "oops"],
+      "likes": 45,
+      "comments": []
+    },
+    {
+      "id": "2",
+      "author": "Ignatius Flameheart",
+      "heading": "Fireproof Marshmallows?",
+      "text": "Tried roasting marshmallows with my flame breath... ended up inventing 'marshmallow lava' instead. Who's hungry?",
+      "tags": ["fire", "marshmallows", "oops"],
+      "likes": 72,
+      "comments": []
+    },
+    {
+      "id": "3",
+      "author": "Luna Lumina",
+      "heading": "Spider Serenade",
+      "text": "Taught Arachnid Melody to sing 'Twinkle Twinkle Little Star.' Now she won’t stop. Send help (and earplugs).",
+      "tags": ["spiders", "music", "stars"],
+      "likes": 63,
+      "comments": []
+    },
+    {
+      "id": "4",
+      "author": "Terrus Mosshide",
+      "heading": "Tree Hugging Gone Wrong",
+      "text": "Accidentally hugged a tree that was actually a very annoyed Ent. We’re cool now, but I owe it 20 acorns.",
+      "tags": ["nature", "trees", "oops"],
+      "likes": 50,
+      "comments": []
+    },
+    {
+      "id": "5",
+      "author": "Zephyr Skywhisper",
+      "heading": "Windy Mistakes",
+      "text": "Used a gust of wind to cool my tea... and accidentally launched it into space. Sorry, Orion!",
+      "tags": ["wind", "oops", "tea"],
+      "likes": 84,
+      "comments": []
+    },
+    {
+      "id": "6",
+      "author": "Eclipse Nocturne",
+      "heading": "Shadow Surprises",
+      "text": "Created a shadow illusion of a cake. Turns out, hungry monsters don’t appreciate fake desserts. My bad!",
+      "tags": ["illusions", "cake", "oops"],
+      "likes": 68,
+      "comments": []
+    },
+    {
+      "id": "7",
+      "author": "Pyra Emberglow",
+      "heading": "Cooking Catastrophe",
+      "text": "Tried cooking with my flames... let’s just say my Inferno Pepper Stew now glows in the dark. Bon appétit?",
+      "tags": ["fire", "cooking", "oops"],
+      "likes": 92,
+      "comments": []
+    },
+    {
+      "id": "8",
+      "author": "Selena Dewdrop",
+      "heading": "Dewdrop Drama",
+      "text": "Accidentally overwatered a glow-toad, and now Verdant is the size of a pumpkin. He’s loving it, though.",
+      "tags": ["nature", "toads", "oops"],
+      "likes": 54,
+      "comments": []
+    },
+    {
+      "id": "9",
+      "author": "Orion Starcaster",
+      "heading": "Constellation Chaos",
+      "text": "Tried to create a new constellation, but accidentally spelled out 'HELP.' Now aliens are knocking.",
+      "tags": ["stars", "constellations", "oops"],
+      "likes": 77,
+      "comments": []
+    },
+    {
+      "id": "10",
+      "author": "Aurora Glimmer",
+      "heading": "Blinded by the Light",
+      "text": "Tried to create a rainbow with my light powers... ended up blinding myself instead. At least it looked pretty!",
+      "tags": ["light", "rainbows", "oops"],
+      "likes": 89,
+      "comments": []
+    }
+  ]
+}

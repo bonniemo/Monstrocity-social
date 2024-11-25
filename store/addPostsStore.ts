@@ -22,6 +22,8 @@ type PostsState = {
   posts: Post[];
   loadPosts: (posts: Post[]) => void;
   addPost: (newPost: Omit<Post, "id" | "likes" | "comments">) => void;
+  likePost: (postId: string) => void;
+  // put get post in it´s own store?
   getPostsByAuthor: (author: string) => Post[];
   getPostsExcludingAuthor: (author: string) => Post[];
 };
@@ -32,9 +34,10 @@ const addPostsStore = create<PostsState>((set, get) => ({
     set(() => ({
       posts: posts.map((post) => ({
         ...post,
-        id: post.id || uuid.v4().toString(), 
+        id: post.id || uuid.v4().toString(),
       })),
     })),
+
   addPost: (newPost) =>
     set((state) => ({
       posts: [
@@ -42,8 +45,17 @@ const addPostsStore = create<PostsState>((set, get) => ({
         { ...newPost, id: uuid.v4().toString(), likes: 0, comments: [] },
       ],
     })),
+
+  likePost: (postId: string) =>
+    set((state) => ({
+      posts: state.posts.map((post) =>
+        post.id === postId ? { ...post, likes: post.likes + 1 } : post
+      ),
+    })),
+
   getPostsByAuthor: (author) =>
     get().posts.filter((post) => post.author === author),
+
   getPostsExcludingAuthor: (author) =>
     get().posts.filter((post) => post.author !== author),
 }));

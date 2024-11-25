@@ -3,6 +3,7 @@ import useMonsterStore from "@/store/monsterStore";
 import { getAvatarSource } from "@/utils/getAvatarSource";
 import React from "react";
 import { FlatList, Image, Text, View } from "react-native";
+import LikeButton from "../buttons/LikeButton";
 import { postsStyles } from "./postsStyles";
 
 type PostListProps = {
@@ -11,7 +12,7 @@ type PostListProps = {
 
 export default function PostList({ filterType }: PostListProps) {
   const { selectedMonster } = useMonsterStore();
-  const { getPostsByAuthor, getPostsExcludingAuthor } = usePostsStore();
+  const { getPostsByAuthor, getPostsExcludingAuthor, likePost } = usePostsStore();
 
   if (!selectedMonster) {
     return (
@@ -50,6 +51,11 @@ export default function PostList({ filterType }: PostListProps) {
             <Text style={postsStyles.postTags}>
               Tags: {item.tags.join(", ")}
             </Text>
+            <LikeButton
+              isLiked={item.likes > 0}
+              likes={item.likes}
+              onPress={() => likePost(item.id)}
+            />
           </View>
         );
       }}

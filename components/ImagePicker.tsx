@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/buttons/Button";
 import * as ImagePicker from "expo-image-picker";
 import React from "react";
 
@@ -22,6 +22,10 @@ export default function ImagePickerComponent({ onImageSelected }: Props) {
   };
 
   return (
-    <Button variant="withIcon" label="Choose a photo" onPress={pickImageAsync} />
+    <Button
+      variant="withIcon"
+      label="Choose a photo"
+      onPress={pickImageAsync}
+    />
   );
 }
