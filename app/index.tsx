@@ -1,4 +1,4 @@
-import MonsterList from "@/components/MonsterList";
+import MonsterList from "@/components/MonsterCard/MonsterList";
 import addPostsStore from "@/store/addPostsStore";
 import useMonsterStore from "@/store/monsterStore";
 import { layoutStyles } from "@/styles/layoutStyles";
