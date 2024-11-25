@@ -1,5 +1,7 @@
 import avatarMapping from "@/components/MonsterCard/avatarMapping";
+import PostList from "@/components/Posts/PostDisplay";
 import useMonsterStore from "@/store/monsterStore";
+import { layoutStyles } from "@/styles/layoutStyles";
 import React from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
@@ -42,6 +44,10 @@ export default function Profile() {
         </View>
       ))}
       <Text style={styles.biography}>{selectedMonster.biography}</Text>
+
+      <View style={layoutStyles.container}>
+        <PostList filterType="profile" />
+      </View>
     </ScrollView>
   );
 }

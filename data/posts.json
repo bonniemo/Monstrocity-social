@@ -1,0 +1,95 @@
+{
+    "posts": [
+      {
+        "id": "1",
+        "author": "Nyx Umbra",
+        "heading": "Embracing the Shadows",
+        "text": "The beauty of shadows is in their mystery. Tonight, the crescent moon whispers secrets only the brave can hear.",
+        "tags": ["mystery", "shadows", "night"],
+        "likes": 0,
+        "comments": []
+      },
+      {
+        "id": "2",
+        "author": "Ignatius Flameheart",
+        "heading": "Blazing New Trails",
+        "text": "Nothing feels better than the thrill of discovery! Let your inner fire guide you to new adventures.",
+        "tags": ["adventure", "fire", "exploration"],
+        "likes": 0,
+        "comments": []
+      },
+      {
+        "id": "3",
+        "author": "Luna Lumina",
+        "heading": "Starry Nights and Kind Hearts",
+        "text": "When the stars align, they remind us of the connections we share. Let their light guide you through even the darkest times.",
+        "tags": ["stars", "guidance", "healing"],
+        "likes": 0,
+        "comments": []
+      },
+      {
+        "id": "4",
+        "author": "Terrus Mosshide",
+        "heading": "Roots Run Deep",
+        "text": "Growth takes time, but every seed has the potential to flourish. Remember to nurture the roots of your life.",
+        "tags": ["growth", "nature", "earth"],
+        "likes": 0,
+        "comments": []
+      },
+      {
+        "id": "5",
+        "author": "Zephyr Skywhisper",
+        "heading": "Feel the Breeze",
+        "text": "The winds carry stories of freedom and endless possibilities. Take a leap, and let the breeze guide your path!",
+        "tags": ["wind", "freedom", "adventure"],
+        "likes": 0,
+        "comments": []
+      },
+      {
+        "id": "6",
+        "author": "Eclipse Nocturne",
+        "heading": "Illusions of the Night",
+        "text": "The night is a canvas, and I paint with shadows and dreams. Watch closely; not everything is as it seems.",
+        "tags": ["illusions", "night", "creativity"],
+        "likes": 0,
+        "comments": []
+      },
+      {
+        "id": "7",
+        "author": "Pyra Emberglow",
+        "heading": "Ignite Your Passion",
+        "text": "Fire is not just destruction; it is the spark of creation. Let your passion burn bright and inspire those around you!",
+        "tags": ["fire", "passion", "inspiration"],
+        "likes": 0,
+        "comments": []
+      },
+      {
+        "id": "8",
+        "author": "Selena Dewdrop",
+        "heading": "Nature's Healing Touch",
+        "text": "Even the smallest droplet of dew can bring life. Let nature's gentle touch remind you of the beauty in simplicity.",
+        "tags": ["nature", "healing", "simplicity"],
+        "likes": 0,
+        "comments": []
+      },
+      {
+        "id": "9",
+        "author": "Orion Starcaster",
+        "heading": "Guided by the Stars",
+        "text": "The constellations tell ancient stories. Look up, and you might find the answers you've been seeking.",
+        "tags": ["stars", "guidance", "wisdom"],
+        "likes": 0,
+        "comments": []
+      },
+      {
+        "id": "10",
+        "author": "Aurora Glimmer",
+        "heading": "Shine Bright",
+        "text": "Every light is unique, and together, we create dazzling displays. Don't dim your shine for anyone!",
+        "tags": ["light", "shine", "individuality"],
+        "likes": 0,
+        "comments": []
+      }
+    ]
+  }
+  

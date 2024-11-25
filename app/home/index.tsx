@@ -1,13 +1,13 @@
-
-import { Text, View } from "react-native";
+import PostList from "@/components/Posts/PostDisplay";
+import PostForm from "@/components/Posts/PostForm";
+import { ScrollView, Text, View } from "react-native";
 
 export default function HomeScreen() {
   return (
-    <View>
+    <ScrollView>
       <Text>Welcome to the Home Screen!</Text>
-    </View>
+      <PostForm />
+      <PostList filterType="feed" />
+    </ScrollView>
   );
 }
-
-
-
