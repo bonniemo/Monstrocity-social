@@ -1,6 +1,6 @@
 import PostList from "@/components/Posts/PostDisplay";
 import PostForm from "@/components/Posts/PostForm";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text } from "react-native";
 
 export default function HomeScreen() {
   return (
