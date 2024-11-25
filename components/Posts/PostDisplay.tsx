@@ -12,7 +12,8 @@ type PostListProps = {
 
 export default function PostList({ filterType }: PostListProps) {
   const { selectedMonster } = useMonsterStore();
-  const { getPostsByAuthor, getPostsExcludingAuthor, likePost } = usePostsStore();
+  const { getPostsByAuthor, getPostsExcludingAuthor, likePost } =
+    usePostsStore();
 
   if (!selectedMonster) {
     return (
@@ -52,9 +53,9 @@ export default function PostList({ filterType }: PostListProps) {
               Tags: {item.tags.join(", ")}
             </Text>
             <LikeButton
-              isLiked={item.likes > 0}
-              likes={item.likes}
-              onPress={() => likePost(item.id)}
+              isLiked={item.likedBy?.includes(selectedMonster.name)}
+              likes={item.likedBy.length || 0}
+              onPress={() => likePost(item.id, selectedMonster.name)}
             />
           </View>
         );

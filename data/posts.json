@@ -6,7 +6,7 @@
       "heading": "Shadow Pranks",
       "text": "I hid in the shadow of a guard dog, only to realize it was wagging its tail at me the entire time. Stealth mode: failed.",
       "tags": ["shadows", "pranks", "oops"],
-      "likes": 45,
+      "likedBy": ["Luna Lumina", "Selena Dewdrop", "Zephyr Skywhisper"],
       "comments": []
     },
     {
@@ -15,7 +15,7 @@
       "heading": "Fireproof Marshmallows?",
       "text": "Tried roasting marshmallows with my flame breath... ended up inventing 'marshmallow lava' instead. Who's hungry?",
       "tags": ["fire", "marshmallows", "oops"],
-      "likes": 72,
+      "likedBy": ["Nyx Umbra", "Pyra Emberglow"],
       "comments": []
     },
     {
@@ -24,7 +24,7 @@
       "heading": "Spider Serenade",
       "text": "Taught Arachnid Melody to sing 'Twinkle Twinkle Little Star.' Now she won’t stop. Send help (and earplugs).",
       "tags": ["spiders", "music", "stars"],
-      "likes": 63,
+      "likedBy": ["Eclipse Nocturne", "Aurora Glimmer"],
       "comments": []
     },
     {
@@ -33,7 +33,7 @@
       "heading": "Tree Hugging Gone Wrong",
       "text": "Accidentally hugged a tree that was actually a very annoyed Ent. We’re cool now, but I owe it 20 acorns.",
       "tags": ["nature", "trees", "oops"],
-      "likes": 50,
+      "likedBy": ["Selena Dewdrop"],
       "comments": []
     },
     {
@@ -42,7 +42,7 @@
       "heading": "Windy Mistakes",
       "text": "Used a gust of wind to cool my tea... and accidentally launched it into space. Sorry, Orion!",
       "tags": ["wind", "oops", "tea"],
-      "likes": 84,
+      "likedBy": ["Ignatius Flameheart", "Orion Starcaster", "Eclipse Nocturne"],
       "comments": []
     },
     {
@@ -51,7 +51,7 @@
       "heading": "Shadow Surprises",
       "text": "Created a shadow illusion of a cake. Turns out, hungry monsters don’t appreciate fake desserts. My bad!",
       "tags": ["illusions", "cake", "oops"],
-      "likes": 68,
+      "likedBy": ["Nyx Umbra", "Aurora Glimmer", "Terrus Mosshide"],
       "comments": []
     },
     {
@@ -60,7 +60,7 @@
       "heading": "Cooking Catastrophe",
       "text": "Tried cooking with my flames... let’s just say my Inferno Pepper Stew now glows in the dark. Bon appétit?",
       "tags": ["fire", "cooking", "oops"],
-      "likes": 92,
+      "likedBy": ["Ignatius Flameheart", "Zephyr Skywhisper"],
       "comments": []
     },
     {
@@ -69,7 +69,7 @@
       "heading": "Dewdrop Drama",
       "text": "Accidentally overwatered a glow-toad, and now Verdant is the size of a pumpkin. He’s loving it, though.",
       "tags": ["nature", "toads", "oops"],
-      "likes": 54,
+      "likedBy": ["Terrus Mosshide"],
       "comments": []
     },
     {
@@ -78,7 +78,7 @@
       "heading": "Constellation Chaos",
       "text": "Tried to create a new constellation, but accidentally spelled out 'HELP.' Now aliens are knocking.",
       "tags": ["stars", "constellations", "oops"],
-      "likes": 77,
+      "likedBy": ["Luna Lumina", "Aurora Glimmer"],
       "comments": []
     },
     {
@@ -87,7 +87,7 @@
       "heading": "Blinded by the Light",
       "text": "Tried to create a rainbow with my light powers... ended up blinding myself instead. At least it looked pretty!",
       "tags": ["light", "rainbows", "oops"],
-      "likes": 89,
+      "likedBy": ["Eclipse Nocturne", "Nyx Umbra", "Selena Dewdrop"],
       "comments": []
     }
   ]
