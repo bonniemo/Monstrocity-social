@@ -2,10 +2,12 @@ import addPostsStore from "@/store/addPostsStore";
 import useMonsterStore from "@/store/monsterStore";
 import { formStyles } from "@/styles/formStyles";
 import { layoutStyles } from "@/styles/layoutStyles";
+import { getAvatarSource } from "@/utils/getAvatarSource";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 
-import { Button, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View, Image } from "react-native";
+import { postsStyles } from "./postsStyles";
 
 type PostFormData = {
   heading: string;
@@ -35,10 +37,14 @@ export default function PostForm() {
     reset();
     alert("Post created successfully!");
   };
+  const avatarSource = selectedMonster
+  ? getAvatarSource(selectedMonster.name)
+  : getAvatarSource("default");
 
   return (
-    <View style={layoutStyles.container}>
-      <Text>Create a Post</Text>
+    <View style={formStyles.formContainer}>
+      <Text>{selectedMonster?.name}</Text>
+      <Image source={avatarSource} style={postsStyles.avatar} />
       <Controller
         name="heading"
         control={control}
