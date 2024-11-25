@@ -1,11 +1,12 @@
 import usePostsStore from "@/store/addPostsStore";
 import useMonsterStore from "@/store/monsterStore";
+import { getAvatarSource } from "@/utils/getAvatarSource";
 import React from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Image, Text, View } from "react-native";
 import { postsStyles } from "./postsStyles";
 
 type PostListProps = {
-  filterType: "feed" | "profile"; 
+  filterType: "feed" | "profile";
 };
 
 export default function PostList({ filterType }: PostListProps) {
@@ -37,14 +38,21 @@ export default function PostList({ filterType }: PostListProps) {
     <FlatList
       data={posts}
       keyExtractor={(post) => post.id}
-      renderItem={({ item }) => (
-        <View style={postsStyles.postCard}>
-          <Text>{item.author}</Text>
-          <Text style={postsStyles.postHeading}>{item.heading}</Text>
-          <Text>{item.text}</Text>
-          <Text style={postsStyles.postTags}>Tags: {item.tags.join(", ")}</Text>
-        </View>
-      )}
+      renderItem={({ item }) => {
+        const avatarSource = getAvatarSource(item.author);
+
+        return (
+          <View style={postsStyles.postCard}>
+            <Image source={avatarSource} style={postsStyles.avatar} />
+            <Text>{item.author}</Text>
+            <Text style={postsStyles.postHeading}>{item.heading}</Text>
+            <Text>{item.text}</Text>
+            <Text style={postsStyles.postTags}>
+              Tags: {item.tags.join(", ")}
+            </Text>
+          </View>
+        );
+      }}
     />
   );
 }

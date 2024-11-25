@@ -23,4 +23,9 @@ export const postsStyles = StyleSheet.create({
     marginTop: 8,
     fontStyle: "italic",
   },
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+  }
 });

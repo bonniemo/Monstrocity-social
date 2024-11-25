@@ -1,5 +1,5 @@
 import { Image, Text, TouchableOpacity } from "react-native";
-import avatarMapping from "./avatarMapping";
+import avatarMapping from "../../utils/avatarMapping";
 import { monsterCardStyles } from "./monsterCardStyles";
 
 type MonsterCardProps = {

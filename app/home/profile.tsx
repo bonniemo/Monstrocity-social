@@ -1,7 +1,7 @@
-import avatarMapping from "@/components/MonsterCard/avatarMapping";
 import PostList from "@/components/Posts/PostDisplay";
 import useMonsterStore from "@/store/monsterStore";
 import { layoutStyles } from "@/styles/layoutStyles";
+import avatarMapping from "@/utils/avatarMapping";
 import React from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
