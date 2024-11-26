@@ -1,40 +1,26 @@
 import React from "react";
-import {
-  Image,
-  ImageSourcePropType,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 type HouseProps = {
-  title: string;
   specialty: string;
   traits: string;
   motto: string;
   notableMembers: string[];
   funFact: string;
   description: string;
-  image: ImageSourcePropType;
 };
 
 export default function HouseCard({
-  title,
   specialty,
   traits,
   motto,
   notableMembers,
   funFact,
   description,
-  image,
 }: HouseProps) {
   return (
     <View style={styles.houseContainer}>
-      <Text style={styles.houseTitle}>{title}</Text>
-      <Image source={image} style={styles.houseImage} />
-      <Text style={styles.paragraph}>
-       {description}
-      </Text>
+      <Text style={styles.paragraph}>{description}</Text>
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Specialty:</Text> {specialty}
       </Text>
@@ -61,17 +47,12 @@ const styles = StyleSheet.create({
   },
   houseImage: {
     width: "80%",
-    height: 250,    
+    height: 250,
     resizeMode: "contain",
     marginBottom: 10,
     borderRadius: 50,
   },
-  houseTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#ffd33d",
-    marginBottom: 10,
-  },
+
   paragraph: {
     fontSize: 16,
     color: "#fff",
