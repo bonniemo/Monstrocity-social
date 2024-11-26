@@ -53,6 +53,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   pagerContainer: {
-    height: 700,
+    height: 720,
   },
 });
