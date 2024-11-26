@@ -56,10 +56,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#25292e",
-    padding: 16,
+    padding: 20,
   },
   content: {
-    alignItems: "center",
     paddingBottom: 20,
   },
   avatar: {
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    width: "90%",
+    width: "100%",
     marginBottom: 10,
   },
   propertyLabel: {
@@ -95,9 +94,7 @@ const styles = StyleSheet.create({
   biography: {
     fontSize: 16,
     color: "#aaa",
-    textAlign: "center",
     marginTop: 20,
-    marginHorizontal: 10,
   },
   errorText: {
     color: "red",
