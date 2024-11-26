@@ -40,6 +40,7 @@ export default function PostList({ filterType }: PostListProps) {
     <FlatList
       data={posts}
       keyExtractor={(post) => post.id}
+      scrollEnabled={false}
       renderItem={({ item }) => {
         const avatarSource = getAvatarSource(item.author);
 

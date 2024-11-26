@@ -31,6 +31,7 @@ export default function MonsterList() {
         renderItem={renderMonsterCard}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={layoutStyles.scrollContainer}
+        scrollEnabled={false}
       />
     </View>
   );
