@@ -50,9 +50,11 @@ export default function PostList({ filterType }: PostListProps) {
             <Text>{item.author}</Text>
             <Text style={postsStyles.postHeading}>{item.heading}</Text>
             <Text>{item.text}</Text>
-            <Text style={postsStyles.postTags}>
-              Tags: {item.tags.join(", ")}
-            </Text>
+            {item.tags && (
+              <Text style={postsStyles.postTags}>
+                Tags: {item.tags.join(", ")}
+              </Text>
+            )}
             <LikeButton
               isLiked={item.likedBy?.includes(selectedMonster.name)}
               likes={item.likedBy.length || 0}

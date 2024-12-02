@@ -3,8 +3,8 @@ import { layoutStyles } from "@/styles/layoutStyles";
 import { Monster } from "@/types/monsterTypes";
 import React from "react";
 import { FlatList, View } from "react-native";
-import monsters from "../../data/monsters.json";
-import MonsterCard from "./MonsterCard";
+import monsters from "../data/monsters.json";
+import MonsterCard from "./MonsterCard/MonsterCard";
 
 export default function MonsterList() {
   const setSelectedMonster = useMonsterStore(

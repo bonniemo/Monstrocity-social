@@ -1,12 +1,19 @@
 import { useState } from "react";
-import { Image, NativeSyntheticEvent, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  NativeSyntheticEvent,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import PagerView from "react-native-pager-view";
 import HouseIgnis from "./houses/HouseIgnis";
 import HouseLumina from "./houses/HouseLumina";
+import HouseTerra from "./houses/HouseTerra";
 import HouseUmbra from "./houses/HouseUmbra";
 
 type PagerViewEvent = NativeSyntheticEvent<{
-  position: number; 
+  position: number;
 }>;
 
 export default function MyPager() {
@@ -18,7 +25,11 @@ export default function MyPager() {
 
   return (
     <View style={styles.container}>
-      <PagerView style={styles.container} initialPage={0} onPageSelected={handlePageChange}>
+      <PagerView
+        style={styles.container}
+        initialPage={0}
+        onPageSelected={handlePageChange}
+      >
         <View style={styles.page} key="1">
           <Text style={styles.houseTitle}>Umbra</Text>
           <Image
@@ -49,7 +60,7 @@ export default function MyPager() {
             source={require("../assets/houses/terra.png")}
             style={styles.houseImage}
           />
-          <HouseLumina />
+          <HouseTerra />
         </View>
       </PagerView>
       <View style={styles.pagination}>

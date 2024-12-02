@@ -5,7 +5,6 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 export default function AboutScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-
       <Text style={styles.paragraph}>
         Welcome to Monstrocity, the ultimate hangout for the monster world!
         Whether you're creeping through shadows, unleashing fiery antics, or
