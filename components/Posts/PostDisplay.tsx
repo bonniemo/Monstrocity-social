@@ -1,8 +1,10 @@
 import usePostsStore from "@/store/addPostsStore";
 import useMonsterStore from "@/store/monsterStore";
 import { getAvatarSource } from "@/utils/getAvatarSource";
+import { router } from "expo-router";
 import React from "react";
 import { FlatList, Image, Text, View } from "react-native";
+import CommentButton from "../buttons/CommentButton";
 import LikeButton from "../buttons/LikeButton";
 import { postsStyles } from "./postsStyles";
 
@@ -60,6 +62,7 @@ export default function PostList({ filterType }: PostListProps) {
               likes={item.likedBy.length || 0}
               onPress={() => likePost(item.id, selectedMonster.name)}
             />
+            <CommentButton onPress={() => router.push("/comments")} comments={8} />            
           </View>
         );
       }}
