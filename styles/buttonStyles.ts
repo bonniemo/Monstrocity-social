@@ -10,41 +10,23 @@ export const buttonStyles = StyleSheet.create({
     justifyContent: "center",
     padding: 3,
   },
+  text: {
+    fontSize: 16,
+    color: "white",
+  },
 
   // Base styles for all buttons
   buttonBase: {
+    backgroundColor: "#1e1e1e",
     borderRadius: 10,
-    width: "100%",
-    height: "100%",
+    width: "60%",
+    height: "80%",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-  },
-
-  // Styles specific to ButtonWithIcon
-  buttonWithIconContainer: {
-    borderWidth: 4,
-    borderColor: "#ffd33d",
-    borderRadius: 18,
-  },
-  buttonWithIcon: {
-    backgroundColor: "#fff",
-  },
-  buttonWithIconLabel: {
-    color: "#25292e",
-    fontSize: 16,
-  },
-  buttonWithIconIcon: {
-    paddingRight: 8,
-    color: "#25292e",
-  },
-
-  // Styles specific to ButtonPlain
+  },  
   buttonPlain: {
     backgroundColor: "#25292e",
   },
-  buttonPlainLabel: {
-    color: "#fff",
-    fontSize: 16,
-  },
+ 
 });

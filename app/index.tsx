@@ -1,11 +1,13 @@
+import ButtonBase from "@/components/buttons/ButtonBase";
 import MonsterList from "@/components/MonsterList";
 import addPostsStore from "@/store/addPostsStore";
 import useMonsterStore from "@/store/monsterStore";
 import { layoutStyles } from "@/styles/layoutStyles";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
-import { Button, ScrollView, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import postsData from "../data/posts.json";
+import { textColor } from "@/styles/textStyles";
 
 export default function LoginScreen() {
   const { selectedMonster } = useMonsterStore();
@@ -27,11 +29,9 @@ export default function LoginScreen() {
 
   return (
     <View style={layoutStyles.container}>
-      <Text>Login Screen</Text>
-      <ScrollView style={layoutStyles.scrollContainerSmall}>
-        <MonsterList />
-      </ScrollView>
-      <Button title="Login" onPress={handleLogin} />
+      <Text style={textColor.white}>Welcome, choose a monster to login</Text>
+      <MonsterList />
+      <ButtonBase label="Login" onPress={handleLogin} />
     </View>
   );
 }

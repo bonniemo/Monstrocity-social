@@ -1,10 +1,11 @@
+import MonsterList from "@/components/MonsterList";
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 
 const comments = () => {
   return (
     <View>
-      <Text>Test</Text>
+      <MonsterList />
     </View>
   );
 };

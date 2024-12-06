@@ -6,7 +6,7 @@ export const layoutStyles = StyleSheet.create({
     backgroundColor: "#25292e",
     justifyContent: "center",
     alignItems: "center",
-    padding: 20,
+    padding: 10,
   },
   imageContainer: {
     flex: 1,

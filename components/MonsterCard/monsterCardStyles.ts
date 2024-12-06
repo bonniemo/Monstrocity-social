@@ -2,9 +2,10 @@ import { StyleSheet } from "react-native";
 
 export const monsterCardStyles = StyleSheet.create({
   card: {
-    width: 140,
+    width: 110,
+    height: 130,
     backgroundColor: "#1e1e1e",
-    borderRadius: 8,
+    borderRadius: 40,
     padding: 20,
     alignItems: "center",
     justifyContent: "center",
@@ -16,14 +17,14 @@ export const monsterCardStyles = StyleSheet.create({
     shadowRadius: 4,
   },
   avatar: {
-    width: 80,
-    height: 80,
+    width: 60,
+    height: 60,
     borderRadius: 40,
     marginBottom: 8,
   },
   name: {
     color: "#ffffff",
-    fontSize: 16,
+    fontSize: 12,
     fontWeight: "bold",
     textAlign: "center",
   },

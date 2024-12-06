@@ -1,4 +1,4 @@
-import Button from "@/components/buttons/Button";
+import Button from "@/components/buttons/ButtonBase";
 import * as ImagePicker from "expo-image-picker";
 import React from "react";
 
