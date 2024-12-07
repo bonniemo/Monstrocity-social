@@ -67,22 +67,6 @@ OPENAI_API_KEY=sk-YourOpenAIKeyHere
 
 ⚠️ Important: Make sure .env is listed in .gitignore to avoid accidentally committing your API key.
 
-Configure Babel for react-native-dotenv:
-Update your babel.config.js to include the plugin for handling environment variables:
-
-    module.exports = function (api) {
-      api.cache(true);
-      return {
-        presets: ["babel-preset-expo"],
-        plugins: [
-          ["module:react-native-dotenv", {
-            "moduleName": "@env",
-            "path": ".env"
-          }]
-        ]
-      };
-    };
-
 ▶️ Running the App
 
     Start the app:
