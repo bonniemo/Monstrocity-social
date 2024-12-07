@@ -11,8 +11,8 @@ export default function AboutScreen() {
         sprinkling starlight like cosmic confetti, there's a spot just for you.
         Here, monsters from every nook and cranny come to share epic tales, wild
         adventures, and laugh-out-loud moments. So fluff your wings, sharpen
-        your horns, and join the chaos—Monstrocity is where the magic (and
-        mayhem) happens!
+        your horns, and join the chaos! Monstrocity is where the magic, and
+        mayhem happens!
       </Text>
 
       <Text style={styles.paragraph}>
