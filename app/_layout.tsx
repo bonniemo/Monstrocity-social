@@ -6,9 +6,10 @@ export default function RootLayout() {
       <Stack.Screen name="index" />
       <Stack.Screen name="home" />
       <Stack.Screen
-        name="comments"
+        name="comments/[postId]"
         options={{
           headerShown: true,
+          title: "Comments",
         }}
       />
     </Stack>

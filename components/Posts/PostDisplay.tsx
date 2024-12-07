@@ -63,13 +63,8 @@ export default function PostList({ filterType }: PostListProps) {
               onPress={() => likePost(item.id, selectedMonster.name)}
             />
             <CommentButton
-              onPress={() =>
-                router.push({
-                  pathname: "/comments",
-                  params: { postId: post.id },
-                })
-              }
-              comments={post.comments.length}
+              onPress={() => router.push(`/comments/${item.id}`)}
+              comments={item.comments.length}
             />
           </View>
         );
