@@ -14,5 +14,6 @@ export type Monster = {
     pet: string; // Description of the monster's pet
     catchphrase: string; // The monster's catchphrase
     biography: string; // Short biography of the monster
+    desc: string; // description for requesting ai response
   };
   

@@ -1,3 +1,4 @@
+import { getAIResponse } from "@/components/AiResponse";
 import addPostsStore from "@/store/addPostsStore";
 import useMonsterStore from "@/store/monsterStore";
 import { useLocalSearchParams } from "expo-router";
@@ -33,13 +34,36 @@ export default function Comments() {
     return <Text>Error, post not found</Text>;
   }
 
-  const handleAddComment = () => {
+  const handleAddComment = async () => {
     if (commentText && selectedMonster) {
+      const postAuthorName = post.author;
+      const { monsters } = useMonsterStore.getState();
+      const postAuthor = monsters.find(
+        (monster) => monster.name === postAuthorName
+      );
+
       addComment(postId, { text: commentText, author: selectedMonster.name });
+      const userComment = commentText;
       setCommentText("");
+
+      if (!postAuthor) {
+        console.error(`Monster personality not found for ${postAuthorName}`);
+        return;
+      }
+      const aiReply = await getAIResponse(
+        post.text,
+        postAuthor.desc,
+        userComment
+      );
+
+      if (aiReply) {
+        addComment(postId, {
+          text: aiReply,
+          author: postAuthor.name,
+        });
+      }
     }
   };
-
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Comment on {post.heading}</Text>

@@ -1,3 +1,35 @@
+Setting Up the OpenAI API Key
+
+To use the OpenAI-powered features in this project, you need an API key from OpenAI. Follow these steps to set it up:
+
+    Get Your API Key:
+        Go to the OpenAI website and sign in or create an account.
+        Navigate to the API Keys section in your account settings.
+        Generate a new API key and copy it.
+
+    Set the API Key as an Environment Variable:
+        Open PowerShell on your computer.
+        Run the following command, replacing your_api_key_here with your actual API key:
+
+    setx OPENAI_API_KEY "your_api_key_here"
+
+Restart Your Terminal or Editor:
+
+    Close and reopen your PowerShell or IDE (e.g., VS Code) to ensure the environment variable is loaded.
+
+Verify the Setup:
+
+    Run this command in PowerShell to ensure the variable is set:
+
+    echo $env:OPENAI_API_KEY
+
+    It should display your API key (or part of it if your terminal masks it).
+
+Access the API Key in Code:
+
+    The project will automatically use the OPENAI_API_KEY environment variable. No further setup is required.
+
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
