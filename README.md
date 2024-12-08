@@ -38,6 +38,17 @@ Follow these steps to set up and run the project on your local machine.
 
 ---
 
+🔑 Setting Up Your Environment
+
+    Create a .env File:
+    At the root of your project, create a file named .env. Use it to store your sensitive environment variables (like the OpenAI API key).
+
+    Example .env file:
+
+OPENAI_API_KEY=sk-YourOpenAIKeyHere
+
+⚠️ Important: Make sure .env is listed in .gitignore to avoid accidentally committing your API key.
+
 ### 📦 Installing Dependencies
 
 1. **Clone the repository**:
@@ -55,17 +66,6 @@ npm install
 or
 
     yarn
-
-🔑 Setting Up Your Environment
-
-    Create a .env File:
-    At the root of your project, create a file named .env. Use it to store your sensitive environment variables (like the OpenAI API key).
-
-    Example .env file:
-
-OPENAI_API_KEY=sk-YourOpenAIKeyHere
-
-⚠️ Important: Make sure .env is listed in .gitignore to avoid accidentally committing your API key.
 
 ▶️ Running the App
 
