@@ -12,11 +12,7 @@ import { textColor } from "@/styles/textStyles";
 export default function LoginScreen() {
   const { selectedMonster } = useMonsterStore();
   const { loadPosts } = addPostsStore();
-  const router = useRouter();
-
-  useEffect(() => {
-    loadPosts(postsData.posts);
-  }, []);
+  const router = useRouter(); 
 
   const handleLogin = () => {
     if (selectedMonster) {

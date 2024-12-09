@@ -1,5 +1,7 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import uuid from "react-native-uuid";
 import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 type Comment = {
   id: string;
@@ -34,109 +36,119 @@ type PostsState = {
   getPostsExcludingAuthor: (author: string) => Post[];
 };
 
-const addPostsStore = create<PostsState>((set, get) => ({
-  posts: [],
+const addPostsStore = create(
+  persist<PostsState>(
+    (set, get) => ({
+      posts: [],
 
-  loadPosts: (posts) =>
-    set(() => ({
-      posts: posts.map((post) => ({
-        ...post,
-        id: post.id || uuid.v4().toString(),
-        likedBy: post.likedBy || [],
-        comments: post.comments || [],
-      })),
-    })),
+      loadPosts: (posts) =>
+        set(() => ({
+          posts: posts.map((post) => ({
+            ...post,
+            id: post.id || uuid.v4().toString(),
+            likedBy: post.likedBy || [],
+            comments: post.comments || [],
+          })),
+        })),
 
-  addPost: (newPost) =>
-    set((state) => ({
-      posts: [
-        ...state.posts,
-        {
-          ...newPost,
-          id: uuid.v4().toString(),
-          likedBy: [],
-          comments: [],
-        },
-      ],
-    })),
+      addPost: (newPost) =>
+        set((state) => ({
+          posts: [
+            ...state.posts,
+            {
+              ...newPost,
+              id: uuid.v4().toString(),
+              likedBy: [],
+              comments: [],
+            },
+          ],
+        })),
 
-  removePost: (postId, author) =>
-    set((state) => ({
-      posts: state.posts.filter(
-        (post) => post.id !== postId || post.author !== author
-      ),
-    })),
+      removePost: (postId, author) =>
+        set((state) => ({
+          posts: state.posts.filter(
+            (post) => post.id !== postId || post.author !== author
+          ),
+        })),
 
-  likePost: (postId, monsterName) =>
-    set((state) => ({
-      posts: state.posts.map((post) =>
-        post.id === postId
-          ? {
-              ...post,
-              likedBy: post.likedBy.includes(monsterName)
-                ? post.likedBy.filter((name) => name !== monsterName)
-                : [...post.likedBy, monsterName],
-            }
-          : post
-      ),
-    })),
+      likePost: (postId, monsterName) =>
+        set((state) => ({
+          posts: state.posts.map((post) =>
+            post.id === postId
+              ? {
+                  ...post,
+                  likedBy: post.likedBy.includes(monsterName)
+                    ? post.likedBy.filter((name) => name !== monsterName)
+                    : [...post.likedBy, monsterName],
+                }
+              : post
+          ),
+        })),
 
-  addComment: (postId, newComment) =>
-    set((state) => ({
-      posts: state.posts.map((post) =>
-        post.id === postId
-          ? {
-              ...post,
-              comments: [
-                ...post.comments,
-                { ...newComment, id: uuid.v4().toString(), likedBy: [] },
-              ],
-            }
-          : post
-      ),
-    })),
+      addComment: (postId, newComment) =>
+        set((state) => ({
+          posts: state.posts.map((post) =>
+            post.id === postId
+              ? {
+                  ...post,
+                  comments: [
+                    ...post.comments,
+                    { ...newComment, id: uuid.v4().toString(), likedBy: [] },
+                  ],
+                }
+              : post
+          ),
+        })),
 
-  removeComment: (postId, commentId, author) =>
-    set((state) => ({
-      posts: state.posts.map((post) =>
-        post.id === postId
-          ? {
-              ...post,
-              comments: post.comments.filter(
-                (comment) =>
-                  comment.id !== commentId || comment.author !== author
-              ),
-            }
-          : post
-      ),
-    })),
+      removeComment: (postId, commentId, author) =>
+        set((state) => ({
+          posts: state.posts.map((post) =>
+            post.id === postId
+              ? {
+                  ...post,
+                  comments: post.comments.filter(
+                    (comment) =>
+                      comment.id !== commentId || comment.author !== author
+                  ),
+                }
+              : post
+          ),
+        })),
 
-  likeComment: (postId, commentId, monsterName) =>
-    set((state) => ({
-      posts: state.posts.map((post) =>
-        post.id === postId
-          ? {
-              ...post,
-              comments: post.comments.map((comment) =>
-                comment.id === commentId
-                  ? {
-                      ...comment,
-                      likedBy: comment.likedBy.includes(monsterName)
-                        ? comment.likedBy.filter((name) => name !== monsterName)
-                        : [...comment.likedBy, monsterName],
-                    }
-                  : comment
-              ),
-            }
-          : post
-      ),
-    })),
+      likeComment: (postId, commentId, monsterName) =>
+        set((state) => ({
+          posts: state.posts.map((post) =>
+            post.id === postId
+              ? {
+                  ...post,
+                  comments: post.comments.map((comment) =>
+                    comment.id === commentId
+                      ? {
+                          ...comment,
+                          likedBy: comment.likedBy.includes(monsterName)
+                            ? comment.likedBy.filter(
+                                (name) => name !== monsterName
+                              )
+                            : [...comment.likedBy, monsterName],
+                        }
+                      : comment
+                  ),
+                }
+              : post
+          ),
+        })),
 
-  getPostsByAuthor: (author) =>
-    get().posts.filter((post) => post.author === author),
+      getPostsByAuthor: (author) =>
+        get().posts.filter((post) => post.author === author),
 
-  getPostsExcludingAuthor: (author) =>
-    get().posts.filter((post) => post.author !== author),
-}));
+      getPostsExcludingAuthor: (author) =>
+        get().posts.filter((post) => post.author !== author),
+    }),
+    {
+      name: "posts-storage",
+      storage: createJSONStorage(() => AsyncStorage),
+    }
+  )
+);
 
 export default addPostsStore;
