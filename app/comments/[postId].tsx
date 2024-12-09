@@ -4,6 +4,7 @@ import useMonsterStore from "@/store/monsterStore";
 import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import {
+  ActivityIndicator,
   Button,
   FlatList,
   StyleSheet,
@@ -19,6 +20,8 @@ type SearchParams = {
 export default function Comments() {
   const { postId } = useLocalSearchParams<SearchParams>();
   const [commentText, setCommentText] = useState("");
+  const { monsters } = useMonsterStore.getState();
+  const [isTyping, setIsTyping] = useState(false);
 
   const posts = addPostsStore((state) => state.posts);
   const addComment = addPostsStore((state) => state.addComment);
@@ -37,7 +40,6 @@ export default function Comments() {
   const handleAddComment = async () => {
     if (commentText && selectedMonster) {
       const postAuthorName = post.author;
-      const { monsters } = useMonsterStore.getState();
       const postAuthor = monsters.find(
         (monster) => monster.name === postAuthorName
       );
@@ -50,17 +52,25 @@ export default function Comments() {
         console.error(`Monster personality not found for ${postAuthorName}`);
         return;
       }
-      const aiReply = await getAIResponse(
-        post.text,
-        postAuthor.desc,
-        userComment
-      );
 
-      if (aiReply) {
-        addComment(postId, {
-          text: aiReply,
-          author: postAuthor.name,
-        });
+      setIsTyping(true);
+      try {
+        const aiReply = await getAIResponse(
+          post.text,
+          postAuthor.desc,
+          userComment
+        );
+
+        if (aiReply) {
+          addComment(postId, {
+            text: aiReply,
+            author: postAuthor.name,
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching AI response:", error);
+      } finally {
+        setIsTyping(false);
       }
     }
   };
@@ -78,6 +88,12 @@ export default function Comments() {
           </View>
         )}
       />
+      {isTyping && (
+        <View style={styles.typingContainer}>
+          <ActivityIndicator size="small" color="#000" />
+          <Text style={styles.typingText}>{post.author} is typing...</Text>
+        </View>
+      )}
 
       {selectedMonster ? (
         <Text style={styles.loggedInAs}>
@@ -144,5 +160,16 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     color: "#999",
     marginBottom: 16,
+  },
+  typingContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 12,
+  },
+  typingText: {
+    marginLeft: 8,
+    fontSize: 14,
+    fontStyle: "italic",
+    color: "#555",
   },
 });
