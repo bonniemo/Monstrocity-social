@@ -1,10 +1,10 @@
 import { getAIResponse } from "@/components/AiResponse";
+import { TypingDots } from "@/components/TypingDots";
 import addPostsStore from "@/store/addPostsStore";
 import useMonsterStore from "@/store/monsterStore";
 import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import {
-  ActivityIndicator,
   Button,
   FlatList,
   StyleSheet,
@@ -90,8 +90,8 @@ export default function Comments() {
       />
       {isTyping && (
         <View style={styles.typingContainer}>
-          <ActivityIndicator size="small" color="#000" />
-          <Text style={styles.typingText}>{post.author} is typing...</Text>
+          <Text style={styles.typingText}>{post.author} is typing</Text>
+          <TypingDots />
         </View>
       )}
 
