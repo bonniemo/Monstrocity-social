@@ -1,13 +1,12 @@
 import addPostsStore from "@/store/addPostsStore";
 import useMonsterStore from "@/store/monsterStore";
-import { formStyles } from "@/styles/formStyles";
 import { layoutStyles } from "@/styles/layoutStyles";
 import { getAvatarSource } from "@/utils/getAvatarSource";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 
-import { Button, Text, TextInput, View, Image } from "react-native";
-import { postsStyles } from "./postsStyles";
+import { flexStyles } from "@/styles/flexStyles";
+import { Button, Image, Text, TextInput, View } from "react-native";
 
 type PostFormData = {
   heading: string;
@@ -38,20 +37,44 @@ export default function PostForm() {
     alert("Post created successfully!");
   };
   const avatarSource = selectedMonster
-  ? getAvatarSource(selectedMonster.name)
-  : getAvatarSource("default");
+    ? getAvatarSource(selectedMonster.name)
+    : getAvatarSource("default");
 
   return (
-    <View style={formStyles.formContainer}>
-      <Text>{selectedMonster?.name}</Text>
-      <Image source={avatarSource} style={postsStyles.avatar} />
+    <View
+      style={{
+        width: "100%",
+        padding: 20,
+        borderRadius: 10,
+      }}
+    >
+      <View style={[flexStyles.row, flexStyles.columnGap, layoutStyles.mb]}>
+        <Image
+          source={avatarSource}
+          style={{
+            width: 50,
+            height: 50,
+            borderRadius: 50,
+          }}
+        />
+        <Text style={{ fontSize: 16, fontWeight: "500" }}>
+          {selectedMonster?.name}
+        </Text>
+      </View>
       <Controller
         name="heading"
         control={control}
         defaultValue=""
         render={({ field: { onChange, value } }) => (
           <TextInput
-            style={formStyles.input}
+            style={{
+              borderWidth: 1,
+              borderColor: "#ced4da",
+              borderRadius: 8,
+              padding: 8,
+              marginVertical: 8,
+              backgroundColor: "#ffffff",
+            }}
             placeholder="Post Heading"
             onChangeText={onChange}
             value={value}
@@ -64,7 +87,14 @@ export default function PostForm() {
         defaultValue=""
         render={({ field: { onChange, value } }) => (
           <TextInput
-            style={formStyles.input}
+            style={{
+              borderWidth: 1,
+              borderColor: "#ced4da",
+              borderRadius: 8,
+              padding: 8,
+              marginVertical: 8,
+              backgroundColor: "#ffffff",
+            }}
             placeholder="Post Text"
             multiline
             onChangeText={onChange}
@@ -78,8 +108,15 @@ export default function PostForm() {
         defaultValue=""
         render={({ field: { onChange, value } }) => (
           <TextInput
-            style={formStyles.input}
-            placeholder="Tags (comma-separated)"
+            style={{
+              borderWidth: 1,
+              borderColor: "#ced4da",
+              borderRadius: 8,
+              padding: 8,
+              marginVertical: 8,
+              backgroundColor: "#ffffff",
+            }}
+            placeholder="Tags"
             onChangeText={onChange}
             value={value}
           />

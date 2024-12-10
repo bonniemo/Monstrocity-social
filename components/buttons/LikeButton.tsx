@@ -16,7 +16,7 @@ export default function LikeButton({ isLiked, onPress, likes }: LikeButtonProps)
         size={24}
         color="red"
       />
-      <Text style={{ marginLeft: 8 }}>{likes > 0 && likes}</Text>
+      <Text style={{ marginLeft: 2, fontSize: 14, fontWeight: "500" }}>{likes > 0 && likes}</Text>
     </TouchableOpacity>
   );
 }

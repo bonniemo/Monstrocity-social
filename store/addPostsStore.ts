@@ -41,15 +41,20 @@ const addPostsStore = create(
     (set, get) => ({
       posts: [],
 
-      loadPosts: (posts) =>
-        set(() => ({
-          posts: posts.map((post) => ({
-            ...post,
-            id: post.id || uuid.v4().toString(),
-            likedBy: post.likedBy || [],
-            comments: post.comments || [],
-          })),
-        })),
+      loadPosts: (jsonPosts) =>
+        set((state) => {
+          if (state.posts.length === 0) {
+            return {
+              posts: jsonPosts.map((post) => ({
+                ...post,
+                id: post.id || uuid.v4().toString(),
+                likedBy: post.likedBy || [],
+                comments: post.comments || [],
+              })),
+            };
+          }
+          return state;
+        }),
 
       addPost: (newPost) =>
         set((state) => ({

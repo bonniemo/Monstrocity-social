@@ -1,6 +1,12 @@
 import { StyleSheet } from "react-native";
 
-export const layoutStyles = StyleSheet.create({
+export const layoutStyles = StyleSheet.create({  
+  mb: {
+    marginBottom: 8,
+  },
+  mt: {
+    marginTop: 16,
+  },
   container: {
     flex: 1,
     backgroundColor: "#25292e",

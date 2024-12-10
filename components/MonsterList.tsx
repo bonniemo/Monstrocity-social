@@ -5,7 +5,6 @@ import React from "react";
 import { FlatList } from "react-native";
 import monsters from "../data/monsters.json";
 import MonsterCard from "./MonsterCard/MonsterCard";
-import { loginStyles } from "@/styles/logInStyles";
 
 export default function MonsterList() {
   const setSelectedMonster = useMonsterStore(
@@ -32,7 +31,9 @@ export default function MonsterList() {
       keyExtractor={(item) => item.id.toString()}
       contentContainerStyle={[flexStyles.row]}
       horizontal={true}
-      style={loginStyles.avatarContainer}
+      style={{
+        maxHeight: 200,
+      }}
     />
   );
 }

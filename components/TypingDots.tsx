@@ -31,26 +31,44 @@ export function TypingDots() {
   }, [dot1, dot2, dot3]);
 
   return (
-    <View style={styles.dotsContainer}>
-      <Animated.View style={[styles.dot, { transform: [{ translateY: dot1 }] }]} />
-      <Animated.View style={[styles.dot, { transform: [{ translateY: dot2 }] }]} />
-      <Animated.View style={[styles.dot, { transform: [{ translateY: dot3 }] }]} />
-    </View>
+    <View
+    style={{
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: 8,
+    }}
+  >
+    <Animated.View
+      style={{
+        width: 4,
+        height: 4,
+        borderRadius: 4,
+        backgroundColor: "#555",
+        marginHorizontal: 4,
+        transform: [{ translateY: dot1 }],
+      }}
+    />
+    <Animated.View
+      style={{
+        width: 4,
+        height: 4,
+        borderRadius: 4,
+        backgroundColor: "#555",
+        marginHorizontal: 4,
+        transform: [{ translateY: dot2 }],
+      }}
+    />
+    <Animated.View
+      style={{
+        width: 4,
+        height: 4,
+        borderRadius: 4,
+        backgroundColor: "#555",
+        marginHorizontal: 4,
+        transform: [{ translateY: dot3 }],
+      }}
+    />
+  </View>
   );
 }
-
-const styles = StyleSheet.create({
-  dotsContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 8,
-  },
-  dot: {
-    width: 4,
-    height: 4,
-    borderRadius: 4,
-    backgroundColor: "#555",
-    marginHorizontal: 4,
-  },
-});

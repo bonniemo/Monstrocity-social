@@ -14,7 +14,7 @@ const CommentButton = ({ onPress, comments }: CommentButtonProps) => {
       style={{ flexDirection: "row", alignItems: "center" }}
     >
       <Fontisto name="hipchat" size={24} color="black" />
-      <Text style={{ marginLeft: 8 }}>{ comments }</Text>
+      <Text style={{ marginLeft: 4, fontSize: 14, fontWeight: "500" }}>{ comments }</Text>
     </TouchableOpacity>
   );
 };
