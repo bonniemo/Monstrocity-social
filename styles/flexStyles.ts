@@ -4,6 +4,9 @@ export const flexStyles = StyleSheet.create({
   row: {
     flexDirection: "row",    
   },
+  alignCenter: {
+    alignItems: "center",    
+  },
   columnGap: {
     columnGap: 10,
   },

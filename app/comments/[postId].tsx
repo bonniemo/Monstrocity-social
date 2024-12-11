@@ -2,9 +2,21 @@ import { getAIResponse } from "@/components/AiResponse";
 import { TypingDots } from "@/components/TypingDots";
 import addPostsStore from "@/store/addPostsStore";
 import useMonsterStore from "@/store/monsterStore";
+import { flexStyles } from "@/styles/flexStyles";
+import { layoutStyles } from "@/styles/layoutStyles";
+import { getAvatarSource } from "@/utils/getAvatarSource";
+import Feather from "@expo/vector-icons/Feather";
 import { useLocalSearchParams } from "expo-router";
-import { useState } from "react";
-import { Button, FlatList, Text, TextInput, View } from "react-native";
+import { useRef, useState } from "react";
+
+import {
+  FlatList,
+  Image,
+  Pressable,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 type SearchParams = {
   postId: string;
@@ -15,6 +27,7 @@ export default function Comments() {
   const [commentText, setCommentText] = useState("");
   const { monsters } = useMonsterStore.getState();
   const [isTyping, setIsTyping] = useState(false);
+  const flatListRef = useRef<FlatList>(null);
 
   const posts = addPostsStore((state) => state.posts);
   const addComment = addPostsStore((state) => state.addComment);
@@ -65,8 +78,13 @@ export default function Comments() {
       } finally {
         setIsTyping(false);
       }
+      flatListRef.current?.scrollToEnd({ animated: true });
     }
   };
+  const avatarSource = getAvatarSource(post.author);
+  const avatarLoggedIn = selectedMonster
+    ? getAvatarSource(selectedMonster.name)
+    : undefined;
   return (
     <View style={{ flex: 1, padding: 16, backgroundColor: "#fff" }}>
       <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 16 }}>
@@ -74,6 +92,7 @@ export default function Comments() {
       </Text>
 
       <FlatList
+        ref={flatListRef}
         data={post.comments}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
@@ -91,6 +110,9 @@ export default function Comments() {
             <Text style={{ fontSize: 14 }}>{item.text}</Text>
           </View>
         )}
+        onContentSizeChange={() =>
+          flatListRef.current?.scrollToEnd({ animated: true })
+        }
       />
 
       {isTyping && (
@@ -98,33 +120,55 @@ export default function Comments() {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginTop: 12,
           }}
         >
-          <Text
-            style={{
-              marginLeft: 8,
-              fontSize: 14,
-              fontStyle: "italic",
-              color: "#555",
-            }}
-          >
-            {post.author} is typing
-          </Text>
+          <Image
+            source={avatarSource}
+            style={[
+              {
+                width: 30,
+                height: 30,
+                borderRadius: 20,
+                marginRight: 8,
+                marginBottom: 24,
+              },
+            ]}
+          />
           <TypingDots />
         </View>
       )}
 
       {selectedMonster ? (
-        <Text
-          style={{
-            fontSize: 14,
-            fontWeight: "bold",
-            marginBottom: 8,
-          }}
-        >
-          Commenting as: {selectedMonster.name}
-        </Text>
+        <View style={[flexStyles.row, flexStyles.alignCenter, layoutStyles.mt]}>
+          <Image
+            source={avatarLoggedIn}
+            style={{
+              width: 30,
+              height: 30,
+              borderRadius: 20,
+              marginRight: 8,
+            }}
+          />
+          <TextInput
+            style={[
+              {
+                height: 40,
+                flex: 1,
+                borderColor: "#ccc",
+                borderWidth: 1,
+                borderRadius: 8,
+                paddingHorizontal: 8,
+              },
+              layoutStyles.mr,
+            ]}
+            placeholder="Write a comment..."
+            value={commentText}
+            onChangeText={setCommentText}
+          />
+          <Pressable onPress={handleAddComment}>
+            <Feather name="send" size={24} color="black" />
+          </Pressable>
+        </View>
       ) : (
         <Text
           style={{
@@ -136,25 +180,6 @@ export default function Comments() {
         >
           You must log in to comment.
         </Text>
-      )}
-
-      {selectedMonster && (
-        <>
-          <TextInput
-            style={{
-              height: 40,
-              borderColor: "#ccc",
-              borderWidth: 1,
-              borderRadius: 8,
-              marginBottom: 12,
-              paddingHorizontal: 8,
-            }}
-            placeholder="Write a comment..."
-            value={commentText}
-            onChangeText={setCommentText}
-          />
-          <Button title="Add Comment" onPress={handleAddComment} />
-        </>
       )}
     </View>
   );

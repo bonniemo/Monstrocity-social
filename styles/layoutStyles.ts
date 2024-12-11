@@ -5,7 +5,10 @@ export const layoutStyles = StyleSheet.create({
     marginBottom: 8,
   },
   mt: {
-    marginTop: 16,
+    marginTop: 8,
+  },
+  mr: {
+    marginRight: 8,
   },
   container: {
     flex: 1,
