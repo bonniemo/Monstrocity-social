@@ -6,12 +6,23 @@ import Feather from "@expo/vector-icons/Feather";
 import { useState } from "react";
 import { Image, Pressable, Text, TextInput, View } from "react-native";
 
-export default function CommentField() {
+type CommentFieldProps = {
+  onSubmit: (text: string) => void;
+};
+
+export default function CommentField({ onSubmit }: CommentFieldProps) {
   const [commentText, setCommentText] = useState("");
   const selectedMonster = useMonsterStore((state) => state.selectedMonster);
   const avatarLoggedIn = selectedMonster
     ? getAvatarSource(selectedMonster.name)
     : undefined;
+
+    const handleSend = () => {
+      if (commentText !== "") {
+        onSubmit(commentText)
+        setCommentText("")
+      }
+    };
 
   return (
     <>
@@ -42,7 +53,7 @@ export default function CommentField() {
             value={commentText}
             onChangeText={setCommentText}
           />
-          <Pressable onPress={handleAddComment}>
+          <Pressable onPress={handleSend}>
             <Feather name="send" size={24} color="black" />
           </Pressable>
         </View>

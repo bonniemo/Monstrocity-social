@@ -1,22 +1,12 @@
 import { getAIResponse } from "@/components/AiResponse";
+import CommentField from "@/components/CommentField";
 import { TypingDots } from "@/components/TypingDots";
 import addPostsStore from "@/store/addPostsStore";
 import useMonsterStore from "@/store/monsterStore";
-import { flexStyles } from "@/styles/flexStyles";
-import { layoutStyles } from "@/styles/layoutStyles";
 import { getAvatarSource } from "@/utils/getAvatarSource";
-import Feather from "@expo/vector-icons/Feather";
 import { useLocalSearchParams } from "expo-router";
 import { useRef, useState } from "react";
-
-import {
-  FlatList,
-  Image,
-  Pressable,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { FlatList, Image, Text, View } from "react-native";
 
 type SearchParams = {
   postId: string;
@@ -24,7 +14,6 @@ type SearchParams = {
 
 export default function Comments() {
   const { postId } = useLocalSearchParams<SearchParams>();
-  const [commentText, setCommentText] = useState("");
   const { monsters } = useMonsterStore.getState();
   const [isTyping, setIsTyping] = useState(false);
   const flatListRef = useRef<FlatList>(null);
@@ -32,27 +21,20 @@ export default function Comments() {
   const posts = addPostsStore((state) => state.posts);
   const addComment = addPostsStore((state) => state.addComment);
   const selectedMonster = useMonsterStore((state) => state.selectedMonster);
-
-  if (!postId) {
-    return <Text>No postId provided</Text>;
-  }
-
   const post = posts.find((post) => post.id === postId);
-
+  
   if (!post) {
     return <Text>Error, post not found</Text>;
   }
 
-  const handleAddComment = async () => {
-    if (commentText && selectedMonster) {
+  const handleAddComment = async (text: string) => {
+    if (text && selectedMonster) {
       const postAuthorName = post.author;
       const postAuthor = monsters.find(
         (monster) => monster.name === postAuthorName
       );
 
-      addComment(postId, { text: commentText, author: selectedMonster.name });
-      const userComment = commentText;
-      setCommentText("");
+      addComment(postId, { text, author: selectedMonster.name });
 
       if (!postAuthor) {
         console.error(`Monster personality not found for ${postAuthorName}`);
@@ -61,11 +43,7 @@ export default function Comments() {
 
       setIsTyping(true);
       try {
-        const aiReply = await getAIResponse(
-          post.text,
-          postAuthor.desc,
-          userComment
-        );
+        const aiReply = await getAIResponse(post.text, postAuthor.desc, text);
 
         if (aiReply) {
           addComment(postId, {
@@ -82,9 +60,7 @@ export default function Comments() {
     }
   };
   const avatarSource = getAvatarSource(post.author);
-  const avatarLoggedIn = selectedMonster
-    ? getAvatarSource(selectedMonster.name)
-    : undefined;
+
   return (
     <View style={{ flex: 1, padding: 16, backgroundColor: "#fff" }}>
       <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 16 }}>
@@ -137,50 +113,7 @@ export default function Comments() {
           <TypingDots />
         </View>
       )}
-
-      {selectedMonster ? (
-        <View style={[flexStyles.row, flexStyles.alignCenter, layoutStyles.mt]}>
-          <Image
-            source={avatarLoggedIn}
-            style={{
-              width: 30,
-              height: 30,
-              borderRadius: 20,
-              marginRight: 8,
-            }}
-          />
-          <TextInput
-            style={[
-              {
-                height: 40,
-                flex: 1,
-                borderColor: "#ccc",
-                borderWidth: 1,
-                borderRadius: 8,
-                paddingHorizontal: 8,
-              },
-              layoutStyles.mr,
-            ]}
-            placeholder="Write a comment..."
-            value={commentText}
-            onChangeText={setCommentText}
-          />
-          <Pressable onPress={handleAddComment}>
-            <Feather name="send" size={24} color="black" />
-          </Pressable>
-        </View>
-      ) : (
-        <Text
-          style={{
-            fontSize: 14,
-            fontStyle: "italic",
-            color: "#999",
-            marginBottom: 16,
-          }}
-        >
-          You must log in to comment.
-        </Text>
-      )}
+      <CommentField onSubmit={handleAddComment} />
     </View>
   );
 }
