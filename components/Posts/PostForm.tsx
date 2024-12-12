@@ -1,10 +1,9 @@
-import addPostsStore from "@/store/addPostsStore";
-import useMonsterStore from "@/store/monsterStore";
 import { layoutStyles } from "@/styles/layoutStyles";
 import { getAvatarSource } from "@/utils/getAvatarSource";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-
+import useMonstersStore from "@/stores/useMonstersStore";
+import { usePostsStore } from "@/stores/usePostsStore";
 import { flexStyles } from "@/styles/flexStyles";
 import { Button, Image, Text, TextInput, View } from "react-native";
 
@@ -15,8 +14,8 @@ type PostFormData = {
 };
 
 export default function PostForm() {
-  const { selectedMonster } = useMonsterStore();
-  const { addPost } = addPostsStore();
+  const { selectedMonster } = useMonstersStore();
+  const { addPost } = usePostsStore();
   const { control, handleSubmit, reset } = useForm<PostFormData>();
 
   const onSubmit = (data: PostFormData) => {

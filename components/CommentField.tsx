@@ -1,4 +1,4 @@
-import useMonsterStore from "@/store/monsterStore";
+import useMonstersStore from "@/stores/useMonstersStore";
 import { flexStyles } from "@/styles/flexStyles";
 import { layoutStyles } from "@/styles/layoutStyles";
 import { getAvatarSource } from "@/utils/getAvatarSource";
@@ -12,17 +12,17 @@ type CommentFieldProps = {
 
 export default function CommentField({ onSubmit }: CommentFieldProps) {
   const [commentText, setCommentText] = useState("");
-  const selectedMonster = useMonsterStore((state) => state.selectedMonster);
+  const selectedMonster = useMonstersStore((state) => state.selectedMonster);
   const avatarLoggedIn = selectedMonster
     ? getAvatarSource(selectedMonster.name)
     : undefined;
 
-    const handleSend = () => {
-      if (commentText !== "") {
-        onSubmit(commentText)
-        setCommentText("")
-      }
-    };
+  const handleSend = () => {
+    if (commentText !== "") {
+      onSubmit(commentText);
+      setCommentText("");
+    }
+  };
 
   return (
     <>

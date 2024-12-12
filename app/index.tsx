@@ -1,19 +1,22 @@
 import ButtonBase from "@/components/buttons/ButtonBase";
 import MonsterList from "@/components/MonsterList";
-import addPostsStore from "@/store/addPostsStore";
-import useMonsterStore from "@/store/monsterStore";
+import useMonstersStore from "@/stores/useMonstersStore";
+import { usePostsStore } from "@/stores/usePostsStore";
 import { layoutStyles } from "@/styles/layoutStyles";
 import { textColor } from "@/styles/textStyles";
 import { useRouter } from "expo-router";
+import { useEffect } from "react";
 import { Text, View } from "react-native";
 import postsData from "../data/posts.json";
 
 export default function LoginScreen() {
-  const { selectedMonster } = useMonsterStore();
+  const { selectedMonster } = useMonstersStore();
   const router = useRouter();
-
   const initialPosts = postsData.posts;
-  addPostsStore.getState().loadPosts(initialPosts);
+
+  useEffect(() => {
+    usePostsStore.getState().loadPosts(initialPosts);
+  }, []);
 
   const handleLogin = () => {
     if (selectedMonster) {

@@ -4,15 +4,15 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import monstersData from "../data/monsters.json";
 
-type MonsterStore = {
+type MonstersStore = {
   monsters: Monster[];
   selectedMonster: Monster | null;
   setSelectedMonster: (monster: Monster) => void;
   logOut: () => void;
 };
 
-const useMonsterStore = create(
-  persist<MonsterStore>(
+const useMonstersStore = create(
+  persist<MonstersStore>(
     (set) => ({
       monsters: monstersData.monsters,
       selectedMonster: null,
@@ -26,4 +26,4 @@ const useMonsterStore = create(
   )
 );
 
-export default useMonsterStore;
+export default useMonstersStore;

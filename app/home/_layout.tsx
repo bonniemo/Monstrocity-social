@@ -1,11 +1,11 @@
-import useMonsterStore from "@/store/monsterStore";
+import useMonstersStore from "@/stores/useMonstersStore";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { router, Tabs } from "expo-router";
 import React from "react";
 import { Button } from "react-native";
 
 export default function HomeTabLayout() {
-  const { logOut } = useMonsterStore();
+  const { logOut } = useMonstersStore();
   const handleLogOut = () => {
     logOut();
     router.replace("/");

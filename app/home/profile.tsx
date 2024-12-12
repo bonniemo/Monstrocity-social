@@ -1,13 +1,12 @@
 import PostList from "@/components/Posts/PostDisplay";
-import useMonsterStore from "@/store/monsterStore";
+import useMonstersStore from "@/stores/useMonstersStore";
 import { flexStyles } from "@/styles/flexStyles";
-import { layoutStyles } from "@/styles/layoutStyles";
 import avatarMapping from "@/utils/avatarMapping";
 import React from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function Profile() {
-  const { selectedMonster } = useMonsterStore();
+  const { selectedMonster } = useMonstersStore();
 
   if (!selectedMonster) {
     return (
@@ -47,26 +46,20 @@ export default function Profile() {
         paddingBottom: 20,
       }}
     >
-      <View
-        style={[flexStyles.row,]}
-      >
-      <Image
-        source={avatarSource}
-        style={[[styles.avatar, {marginRight: 16,}]]}
-      />
-      <View style={{flex: 1}}>
-      <Text
-        style={styles.monsterName}
-      >
-        {selectedMonster.name}
-      </Text>
-      <Text style={styles.label}>
-        Age: <Text style={styles.value}>{selectedMonster.age} years</Text>
-      </Text>
-      <Text style={styles.label}>
-        House: <Text style={styles.value}>{selectedMonster.house}</Text>
-      </Text>
-      </View>
+      <View style={[flexStyles.row]}>
+        <Image
+          source={avatarSource}
+          style={[[styles.avatar, { marginRight: 16 }]]}
+        />
+        <View style={{ flex: 1 }}>
+          <Text style={styles.monsterName}>{selectedMonster.name}</Text>
+          <Text style={styles.label}>
+            Age: <Text style={styles.value}>{selectedMonster.age} years</Text>
+          </Text>
+          <Text style={styles.label}>
+            House: <Text style={styles.value}>{selectedMonster.house}</Text>
+          </Text>
+        </View>
       </View>
       <Text style={styles.label}>
         Pet: <Text style={styles.value}>{selectedMonster.pet}</Text>
@@ -95,7 +88,7 @@ export default function Profile() {
       <Text style={styles.label}>
         Favorite Food:{" "}
         <Text style={styles.value}>{selectedMonster.favoriteFood}</Text>
-      </Text>      
+      </Text>
       <Text style={styles.label}>
         Catchphrase:{" "}
         <Text style={styles.value}>{selectedMonster.catchphrase}</Text>

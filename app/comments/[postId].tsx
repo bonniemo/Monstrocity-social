@@ -1,8 +1,9 @@
 import { getAIResponse } from "@/components/AiResponse";
 import CommentField from "@/components/CommentField";
 import { TypingDots } from "@/components/TypingDots";
-import addPostsStore from "@/store/addPostsStore";
-import useMonsterStore from "@/store/monsterStore";
+import { useCommentsStore } from "@/stores/useCommentsStore";
+import useMonstersStore from "@/stores/useMonstersStore";
+import { usePostsStore } from "@/stores/usePostsStore";
 import { getAvatarSource } from "@/utils/getAvatarSource";
 import { useLocalSearchParams } from "expo-router";
 import { useRef, useState } from "react";
@@ -14,18 +15,20 @@ type SearchParams = {
 
 export default function Comments() {
   const { postId } = useLocalSearchParams<SearchParams>();
-  const { monsters } = useMonsterStore.getState();
+  const { monsters } = useMonstersStore.getState();
   const [isTyping, setIsTyping] = useState(false);
   const flatListRef = useRef<FlatList>(null);
 
-  const posts = addPostsStore((state) => state.posts);
-  const addComment = addPostsStore((state) => state.addComment);
-  const selectedMonster = useMonsterStore((state) => state.selectedMonster);
+  const selectedMonster = useMonstersStore((state) => state.selectedMonster);
+  const posts = usePostsStore((state) => state.posts);
+  const { addComment, getCommentsForPost } = useCommentsStore();
   const post = posts.find((post) => post.id === postId);
-  
+
   if (!post) {
     return <Text>Error, post not found</Text>;
   }
+
+  const comments = getCommentsForPost(post.id);
 
   const handleAddComment = async (text: string) => {
     if (text && selectedMonster) {
@@ -69,7 +72,7 @@ export default function Comments() {
 
       <FlatList
         ref={flatListRef}
-        data={post.comments}
+        data={comments}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View

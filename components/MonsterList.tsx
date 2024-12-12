@@ -1,4 +1,4 @@
-import useMonsterStore from "@/store/monsterStore";
+import useMonstersStore from "@/stores/useMonstersStore";
 import { flexStyles } from "@/styles/flexStyles";
 import { Monster } from "@/types/monsterTypes";
 import React from "react";
@@ -7,7 +7,7 @@ import monsters from "../data/monsters.json";
 import MonsterCard from "./MonsterCard/MonsterCard";
 
 export default function MonsterList() {
-  const setSelectedMonster = useMonsterStore(
+  const setSelectedMonster = useMonstersStore(
     (state) => state.setSelectedMonster
   );
 
