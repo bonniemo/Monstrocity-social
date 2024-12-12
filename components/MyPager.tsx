@@ -23,127 +23,98 @@ export default function MyPager() {
     setActivePage(e.nativeEvent.position);
   };
 
-  return  (
-    <View style={{ flex: 1 }}>
+  return (
+    <View style={styles.container}>
       <PagerView
-        style={{ flex: 1 }}
+        style={styles.pagerView}
         initialPage={0}
         onPageSelected={handlePageChange}
       >
         <View key="1">
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: "bold",
-              color: "#ffd33d",
-              marginBottom: 16,
-            }}
-          >
-            Umbra
-          </Text>
+          <Text style={houseStyles.houseTitle}>Umbra</Text>
           <Image
             source={require("../assets/houses/umbra.png")}
-            style={{
-              width: "100%",
-              height: 300,
-              resizeMode: "cover",
-              marginBottom: 10,
-              borderRadius: 30,
-            }}
+            style={houseStyles.houseImage}
           />
           <HouseUmbra />
         </View>
         <View key="2">
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: "bold",
-              color: "#ffd33d",
-              marginBottom: 16,
-            }}
-          >
-            Ignis
-          </Text>
+          <Text style={houseStyles.houseTitle}>Ignis</Text>
           <Image
             source={require("../assets/houses/ignis.png")}
-            style={{
-              width: "100%",
-              height: 300,
-              resizeMode: "cover",
-              marginBottom: 10,
-              borderRadius: 30,
-            }}
+            style={houseStyles.houseImage}
           />
           <HouseIgnis />
         </View>
         <View key="3">
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: "bold",
-              color: "#ffd33d",
-              marginBottom: 16,
-            }}
-          >
-            Lumina
-          </Text>
+          <Text style={houseStyles.houseTitle}>Lumina</Text>
           <Image
             source={require("../assets/houses/lumina.png")}
-            style={{
-              width: "100%",
-              height: 300,
-              resizeMode: "cover",
-              marginBottom: 10,
-              borderRadius: 30,
-            }}
+            style={houseStyles.houseImage}
           />
           <HouseLumina />
         </View>
         <View key="4">
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: "bold",
-              color: "#ffd33d",
-              marginBottom: 16,
-            }}
-          >
-            Terra
-          </Text>
+          <Text style={houseStyles.houseTitle}>Terra</Text>
           <Image
             source={require("../assets/houses/terra.png")}
-            style={{
-              width: "100%",
-              height: 300,
-              resizeMode: "cover",
-              marginBottom: 10,
-              borderRadius: 30,
-            }}
+            style={houseStyles.houseImage}
           />
           <HouseTerra />
         </View>
       </PagerView>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          marginVertical: 10,
-        }}
-      >
+      <View style={styles.paginationContainer}>
         {[0, 1, 2, 3].map((_, index) => (
           <View
             key={index}
-            style={{
-              width: 10,
-              height: 10,
-              borderRadius: 5,
-              marginHorizontal: 5,
-              backgroundColor: activePage === index ? "#ffd33d" : "#ccc",
-            }}
+            style={[
+              styles.paginationDot,
+              activePage === index && styles.activePaginationDot,
+            ]}
           />
         ))}
       </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  pagerView: {
+    flex: 1,
+  },
+  paginationContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 10,
+  },
+  paginationDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginHorizontal: 5,
+    backgroundColor: "#ccc",
+  },
+  activePaginationDot: {
+    backgroundColor: "#ffd33d",
+  },
+});
+
+const houseStyles = StyleSheet.create({
+  houseTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#ffd33d",
+    marginBottom: 16,
+  },
+  houseImage: {
+    width: "100%",
+    height: 200,
+    resizeMode: "cover",
+    marginBottom: 10,
+    borderRadius: 30,
+  },
+});

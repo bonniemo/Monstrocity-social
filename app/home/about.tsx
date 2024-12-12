@@ -41,7 +41,7 @@ export default function AboutScreen() {
 
       <View
         style={{
-          height: 720,
+          height: 700,
         }}
       >
         <MyPager />

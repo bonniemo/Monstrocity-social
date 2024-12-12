@@ -58,13 +58,7 @@ export default function PostList({ filterType }: PostListProps) {
         const avatarSource = getAvatarSource(item.author);
 
         return (
-          <View
-            style={{
-              flex: 1,
-              padding: 12,
-              backgroundColor: "#f8f9fa",
-            }}
-          >
+          
             <View
               style={{
                 borderWidth: 1,
@@ -124,7 +118,7 @@ export default function PostList({ filterType }: PostListProps) {
                 />
               </View>
             </View>
-          </View>
+        
         );
       }}
     />
