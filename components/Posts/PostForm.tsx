@@ -121,7 +121,7 @@ export default function PostForm() {
           />
         )}
       />
-      <Button title="Create Post" onPress={handleSubmit(onSubmit)} />
+      <Button title="Create Post" onPress={handleSubmit(onSubmit)} color={"#25292e"}/>
     </View>
   );
 }

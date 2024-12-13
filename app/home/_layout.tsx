@@ -1,14 +1,11 @@
-import useMonstersStore from "@/stores/useMonstersStore";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { router, Tabs } from "expo-router";
 import React from "react";
-import { Button } from "react-native";
+import { Pressable } from "react-native";
 
 export default function HomeTabLayout() {
-  const { logOut } = useMonstersStore();
-  const handleLogOut = () => {
-    logOut();
-    router.replace("/");
+  const openSettings = () => {
+    router.push("/settings");
   };
 
   return (
@@ -30,7 +27,9 @@ export default function HomeTabLayout() {
         options={{
           title: "Home",
           headerRight: () => (
-            <Button onPress={handleLogOut} title="Log Out" color="#ff3333" />
+            <Pressable style={{ padding: 8 }} onPress={openSettings}>
+              <Ionicons name="settings-sharp" size={24} color="white" />
+            </Pressable>
           ),
           tabBarIcon: ({ color, focused }) => (
             <Ionicons

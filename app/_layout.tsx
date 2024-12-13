@@ -9,7 +9,14 @@ export default function RootLayout() {
         name="comments/[postId]"
         options={{
           headerShown: true,
-          title: "Comments",
+          title: "Comments",          
+        }}
+      />
+       <Stack.Screen
+        name="settings"
+        options={{
+          headerShown: true,
+          title: "Settings",          
         }}
       />
     </Stack>
